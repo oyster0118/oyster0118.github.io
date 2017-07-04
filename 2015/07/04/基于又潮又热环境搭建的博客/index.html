@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2015/07/04/基于又潮又热环境搭建的博客/index.html">
 <meta property="og:site_name" content="Oyster&#39;s shell">
 <meta property="og:description" content="记录一下过程  安装hexo  安装用到了node和git提前安装好了，依次输入命令12345678910cd d:/hexonpm install hexo-cli -ghexo init blogcd blognpm installhexo g 或者hexo generatehexo s 或者hexo server，可以在http://localhost:4000/ 查看 *github配置">
-<meta property="og:updated_time" content="2017-07-03T16:54:25.041Z">
+<meta property="og:updated_time" content="2017-07-04T13:51:48.333Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="博客开张了！">
 <meta name="twitter:description" content="记录一下过程  安装hexo  安装用到了node和git提前安装好了，依次输入命令12345678910cd d:/hexonpm install hexo-cli -ghexo init blogcd blognpm installhexo g 或者hexo generatehexo s 或者hexo server，可以在http://localhost:4000/ 查看 *github配置">
@@ -188,7 +188,7 @@ type: git
 repository: https://github.com/yourid/yourid.github.io.git
 branch: master
 </code></pre><p>安装hexo-deployer-git自动部署发布工具</p>
-<pre><code>npm instal lhexo-deployer-git  --save
+<pre><code>npm install hexo-deployer-git  --save
 </code></pre><p>其他各种插件</p>
 <pre><code>$ npm install hexo-generator-index --save
 $ npm install hexo-generator-archive --save
@@ -205,9 +205,10 @@ $ npm install hexo-generator-feed --save
 $ npm install hexo-generator-sitemap --save
 </code></pre><p>发布到Github</p>
 <pre><code>hexo clean
-hexo g 
+hexo g  //每次跟新修改之后要重新生成页面时使用
 hexo d
-</code></pre><h3 id="最后一定要小心conf里面：号后面要有一个空格！！！"><a href="#最后一定要小心conf里面：号后面要有一个空格！！！" class="headerlink" title="最后一定要小心conf里面：号后面要有一个空格！！！"></a>最后一定要小心conf里面：号后面要有一个空格！！！</h3><h3 id="最后一定要小心conf里面：号后面要有一个空格！！！-1"><a href="#最后一定要小心conf里面：号后面要有一个空格！！！-1" class="headerlink" title="最后一定要小心conf里面：号后面要有一个空格！！！"></a>最后一定要小心conf里面：号后面要有一个空格！！！</h3><h3 id="最后一定要小心conf里面：号后面要有一个空格！！！-2"><a href="#最后一定要小心conf里面：号后面要有一个空格！！！-2" class="headerlink" title="最后一定要小心conf里面：号后面要有一个空格！！！"></a>最后一定要小心conf里面：号后面要有一个空格！！！</h3>
+</code></pre><p>最后重要的事情要说三遍</p>
+<h3 id="小心conf里面’：’后面要有一个空格！！！"><a href="#小心conf里面’：’后面要有一个空格！！！" class="headerlink" title="小心conf里面’：’后面要有一个空格！！！"></a>小心conf里面’：’后面要有一个空格！！！</h3><h3 id="小心conf里面’：’后面要有一个空格！！！-1"><a href="#小心conf里面’：’后面要有一个空格！！！-1" class="headerlink" title="小心conf里面’：’后面要有一个空格！！！"></a>小心conf里面’：’后面要有一个空格！！！</h3><h3 id="小心conf里面’：’后面要有一个空格！！！-2"><a href="#小心conf里面’：’后面要有一个空格！！！-2" class="headerlink" title="小心conf里面’：’后面要有一个空格！！！"></a>小心conf里面’：’后面要有一个空格！！！</h3>
       
 
       
