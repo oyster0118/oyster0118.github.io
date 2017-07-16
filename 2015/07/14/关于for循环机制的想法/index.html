@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>关于垂直居中的几种常见总结 | Oyster&#39;s shell</title>
+  <title>关于for循环机制的想法 | Oyster&#39;s shell</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言  大家肯定都知道文字垂直居中可以设置line-height的值等于文字容器的height的值来实现。那么，容器级的垂直居中怎么办呢？今天就来总结下几个垂直居中的方法：">
-<meta name="keywords" content="css">
+  <meta name="description" content="前言众所周知，在《权威指南》和《JavaScript高级程序设计 第三版》都明确写了在JS中的{}只是单纯的代码块，而不存在块级作用域。但是ES6出现之后，我对for循环的底层细节有一些小小的困惑。今天就来简单说一说哈~">
+<meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于垂直居中的几种常见总结">
-<meta property="og:url" content="http://yoursite.com/2015/07/07/关于垂直居中的几种常见总结/index.html">
+<meta property="og:title" content="关于for循环机制的想法">
+<meta property="og:url" content="http://yoursite.com/2015/07/14/关于for循环机制的想法/index.html">
 <meta property="og:site_name" content="Oyster&#39;s shell">
-<meta property="og:description" content="前言  大家肯定都知道文字垂直居中可以设置line-height的值等于文字容器的height的值来实现。那么，容器级的垂直居中怎么办呢？今天就来总结下几个垂直居中的方法：">
-<meta property="og:updated_time" content="2017-07-07T15:24:44.482Z">
+<meta property="og:description" content="前言众所周知，在《权威指南》和《JavaScript高级程序设计 第三版》都明确写了在JS中的{}只是单纯的代码块，而不存在块级作用域。但是ES6出现之后，我对for循环的底层细节有一些小小的困惑。今天就来简单说一说哈~">
+<meta property="og:updated_time" content="2017-07-14T14:27:46.308Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于垂直居中的几种常见总结">
-<meta name="twitter:description" content="前言  大家肯定都知道文字垂直居中可以设置line-height的值等于文字容器的height的值来实现。那么，容器级的垂直居中怎么办呢？今天就来总结下几个垂直居中的方法：">
+<meta name="twitter:title" content="关于for循环机制的想法">
+<meta name="twitter:description" content="前言众所周知，在《权威指南》和《JavaScript高级程序设计 第三版》都明确写了在JS中的{}只是单纯的代码块，而不存在块级作用域。但是ES6出现之后，我对for循环的底层细节有一些小小的困惑。今天就来简单说一说哈~">
   
     <link rel="alternative" href="/atom.xml" title="Oyster&#39;s shell" type="application/atom+xml">
   
@@ -158,93 +158,55 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-关于垂直居中的几种常见总结" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-关于for循环机制的想法" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      关于垂直居中的几种常见总结
+      关于for循环机制的想法
     </h1>
   
 
         
-        <a href="/2015/07/07/关于垂直居中的几种常见总结/" class="archive-article-date">
-  	<time datetime="2015-07-07T15:19:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-07</time>
+        <a href="/2015/07/14/关于for循环机制的想法/" class="archive-article-date">
+  	<time datetime="2015-07-14T11:24:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  大家肯定都知道文字垂直居中可以设置line-height的值等于文字容器的height的值来实现。那么，容器级的垂直居中怎么办呢？今天就来总结下几个垂直居中的方法：<br><a id="more"></a><br>method1:对父元素设置display：table-cell</p>
-<pre><code>.outer {
-    width: 400px;
-    height: 400px;
-    background: grey;
-    position: relative;
-    display: table-cell;
-    vertical-align: middle;
-}
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>众所周知，在《权威指南》和《JavaScript高级程序设计 第三版》都明确写了在JS中的{}只是单纯的代码块，而不存在块级作用域。但是ES6出现之后，我对for循环的底层细节有一些小小的困惑。今天就来简单说一说哈~<br><a id="more"></a><br>由于ES6有了<code>let</code>这样的关键字，我对JS底层的实现（比如编译什么的）感觉有些细思极恐。所以大胆猜测一下：    </p>
+<pre>
+for(var i=0; i<3; i++){="" do="" something="" }="" {="" 相当于是每次循环创建了一个块级作用域？="" i="0;" <="" pre="">
 
-.inner {
-    width: 200px;
-    height: 200px;
-    background: white;
-    margin-left: 100px;
-    display: inline-block;
-    vertical-align: middle;
-}
-</code></pre><p>method2:父元素设置伪元素如下，使与子元素同行后设置vertical-align: middle</p>
-<pre><code>    .outer {
-    width: 400px;
-    height: 400px;
-    font-size: 0;
-    background: grey;
-    position: relative;
-    display: table-cell;
-    vertical-align: middle;
-}
+<p>看到这肯定有人骂我智障了，但是大神先别急，来看下面这几段代码：</p>
+<pre>
+for(var i=1; i<=5; i++){="" settimeout(="" function="" timer(){="" console.log(="" i="" );="" },i*1000)="" }="" 每隔1秒打印一个6="" <="" pre="">
 
+<pre>
+for(var i=1; i<=5; i++){="" (function(){="" settimeout(="" function="" timer(){="" console.log(="" i="" );="" },i*1000)="" })();="" }="" 每隔1秒打印一个6="" <="" pre="">
 
-.outer:before {
-    content: &quot;&quot;;
-    display: inline-block;
-    vertical-align: middle;
-    height: 100%;
-}
+<pre>
+for(var i=1; i<=5; i++){="" (function(){="" var="" j="i;" settimeout(="" function="" timer(){="" console.log(="" );="" },j*1000)="" })();="" }="" 正常工作，时间间隔为1秒，打印1，2，3，4，5，6="" <="" pre="">
 
-.inner {
-    width: 200px;
-    height: 200px;
-    background: white;
-    display: inline-block;
-    vertical-align: middle;
-}
-</code></pre><p>#method3:绝对定位;<br>当然了，这里很自然就能想到套用水平居中的套路：</p>
-<p>先相对父元素定位偏移50%，再设置margin向反方向偏移自身的50%。</p>
-<p>所以我想说的其实是另一种方法：</p>
-<p>设置marginauto，控制上下/左右边界即可实现垂直/水平居中</p>
-<pre><code>.one{
-    width: 400px;
-    height: 400px;
-    background: grey;
-    position: relative;
-    }
+<pre>
+for(var i=1; i<=5; i++){="" let="" j="i;" settimeout(="" function="" timer(){="" console.log(="" );="" },j*1000)="" }="" 正常工作，时间间隔为1秒，打印1，2，3，4，5，6="" <="" pre="">
 
-.two {
-    width: 200px;
-    height: 200px;
-    margin: auto;
-    background-color: white;
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    }
-</code></pre>
+<pre>
+for(let i=1; i<=5; i++){="" settimeout(="" function="" timer(){="" console.log(="" i="" );="" },i*1000)="" }="" 正常工作，时间间隔为1秒，打印1，2，3，4，5，6="" <="" pre="">
+
+<p>通过这几个例子很容易发现：let将花括号转化为作用域，就可以得到想要的结果</p>
+<blockquote>
+<p>第二个例子中的立即执行函数虽然形成了自己的作用域，但是并没有什么卵用，因为它自己里面没有 i，所以还是要使用外面的 i，而外面的 i都是一样的，也就是6；</p>
+<p>第三个例子使用了中间变量，而且使用了立即执行函数，所以形成了自己的独立作用域；</p>
+<p>第四个例子在立即执行函数中使用了<code>let</code>,把for循环的代码块（<del>我自己YY的</del>）转化成了真正的块级作用域；</p>
+<p>第五个例子直接在for循环中庸let定义循环变量，也形成了自己的独立作用域。</p>
+</blockquote>
+<p>反正我是说服了自己，不过话说回来这些本来也不重要吧，毕竟该怎么写还是怎么写。今天废话就说到这了~</p>
+</=5;></pre></=5;></pre></=5;></pre></=5;></pre></=5;></pre></3;></pre>
       
 
       
@@ -278,7 +240,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
         		</li>
       		
 		</ul>
@@ -334,7 +296,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2015/07/07/关于垂直居中的几种常见总结/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2015/07/14/关于for循环机制的想法/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -348,18 +310,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2015/07/14/关于for循环机制的想法/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          关于for循环机制的想法
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/07/04/基于又潮又热环境搭建的博客/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">博客开张了！</div>
+    <a href="/2015/07/07/关于垂直居中的几种常见总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">关于垂直居中的几种常见总结</div>
       <i class="icon-circle-right"></i>
     </a>
   
