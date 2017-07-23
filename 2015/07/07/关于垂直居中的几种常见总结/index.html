@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2015/07/07/关于垂直居中的几种常见总结/index.html">
 <meta property="og:site_name" content="Oyster&#39;s shell">
 <meta property="og:description" content="前言  大家肯定都知道文字垂直居中可以设置line-height的值等于文字容器的height的值来实现。那么，容器级的垂直居中怎么办呢？今天就来总结下几个垂直居中的方法：">
-<meta property="og:updated_time" content="2017-07-07T15:24:44.482Z">
+<meta property="og:updated_time" content="2017-07-23T02:43:03.742Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于垂直居中的几种常见总结">
 <meta name="twitter:description" content="前言  大家肯定都知道文字垂直居中可以设置line-height的值等于文字容器的height的值来实现。那么，容器级的垂直居中怎么办呢？今天就来总结下几个垂直居中的方法：">
@@ -178,73 +178,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  大家肯定都知道文字垂直居中可以设置line-height的值等于文字容器的height的值来实现。那么，容器级的垂直居中怎么办呢？今天就来总结下几个垂直居中的方法：<br><a id="more"></a><br>method1:对父元素设置display：table-cell</p>
-<pre><code>.outer {
-    width: 400px;
-    height: 400px;
-    background: grey;
-    position: relative;
-    display: table-cell;
-    vertical-align: middle;
-}
-
-.inner {
-    width: 200px;
-    height: 200px;
-    background: white;
-    margin-left: 100px;
-    display: inline-block;
-    vertical-align: middle;
-}
-</code></pre><p>method2:父元素设置伪元素如下，使与子元素同行后设置vertical-align: middle</p>
-<pre><code>    .outer {
-    width: 400px;
-    height: 400px;
-    font-size: 0;
-    background: grey;
-    position: relative;
-    display: table-cell;
-    vertical-align: middle;
-}
-
-
-.outer:before {
-    content: &quot;&quot;;
-    display: inline-block;
-    vertical-align: middle;
-    height: 100%;
-}
-
-.inner {
-    width: 200px;
-    height: 200px;
-    background: white;
-    display: inline-block;
-    vertical-align: middle;
-}
-</code></pre><p>#method3:绝对定位;<br>当然了，这里很自然就能想到套用水平居中的套路：</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  大家肯定都知道文字垂直居中可以设置line-height的值等于文字容器的height的值来实现。那么，容器级的垂直居中怎么办呢？今天就来总结下几个垂直居中的方法：<br><a id="more"></a><br>method1:对父元素设置display：table-cell<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">        <span class="selector-class">.outer</span> &#123;</div><div class="line">            <span class="attribute">width</span>: <span class="number">400px</span>;</div><div class="line">            <span class="attribute">height</span>: <span class="number">400px</span>;</div><div class="line">            <span class="attribute">background</span>: grey;</div><div class="line">            <span class="attribute">position</span>: relative;</div><div class="line">            <span class="attribute">display</span>: table-cell;</div><div class="line">            <span class="attribute">vertical-align</span>: middle;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="selector-class">.inner</span> &#123;</div><div class="line">            <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">            <span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">            <span class="attribute">background</span>: white;</div><div class="line">            <span class="attribute">margin-left</span>: <span class="number">100px</span>;</div><div class="line">            <span class="attribute">display</span>: inline-block;</div><div class="line">            <span class="attribute">vertical-align</span>: middle;</div><div class="line">        &#125;</div><div class="line">```        </div><div class="line"><span class="selector-tag">method2</span>:父元素设置伪元素如下，使与子元素同行后设置<span class="selector-tag">vertical-align</span>: <span class="selector-tag">middle</span></div><div class="line">```<span class="selector-tag">css</span></div><div class="line">            <span class="selector-class">.outer</span> &#123;</div><div class="line">            <span class="attribute">width</span>: <span class="number">400px</span>;</div><div class="line">            <span class="attribute">height</span>: <span class="number">400px</span>;</div><div class="line">            <span class="attribute">font-size</span>: <span class="number">0</span>;</div><div class="line">            <span class="attribute">background</span>: grey;</div><div class="line">            <span class="attribute">position</span>: relative;</div><div class="line">            <span class="attribute">display</span>: table-cell;</div><div class="line">            <span class="attribute">vertical-align</span>: middle;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line"></div><div class="line">        <span class="selector-class">.outer</span><span class="selector-pseudo">:before</span> &#123;</div><div class="line">            <span class="attribute">content</span>: <span class="string">""</span>;</div><div class="line">            <span class="attribute">display</span>: inline-block;</div><div class="line">            <span class="attribute">vertical-align</span>: middle;</div><div class="line">            <span class="attribute">height</span>: <span class="number">100%</span>;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="selector-class">.inner</span> &#123;</div><div class="line">            <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">            <span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">            <span class="attribute">background</span>: white;</div><div class="line">            <span class="attribute">display</span>: inline-block;</div><div class="line">            <span class="attribute">vertical-align</span>: middle;</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
+<p>#method3:绝对定位;<br>当然了，这里很自然就能想到套用水平居中的套路：</p>
 <p>先相对父元素定位偏移50%，再设置margin向反方向偏移自身的50%。</p>
 <p>所以我想说的其实是另一种方法：</p>
-<p>设置marginauto，控制上下/左右边界即可实现垂直/水平居中</p>
-<pre><code>.one{
-    width: 400px;
-    height: 400px;
-    background: grey;
-    position: relative;
-    }
+<p>设置marginauto，控制上下/左右边界即可实现垂直/水平居中<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.one</span>&#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">400px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">400px</span>;</div><div class="line">    <span class="attribute">background</span>: grey;</div><div class="line">    <span class="attribute">position</span>: relative;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="selector-class">.two</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">    <span class="attribute">margin</span>: auto;</div><div class="line">    <span class="attribute">background-color</span>: white;</div><div class="line">    <span class="attribute">position</span>: absolute;</div><div class="line">    <span class="attribute">top</span>: <span class="number">0px</span>;</div><div class="line">    <span class="attribute">bottom</span>: <span class="number">0px</span>;</div><div class="line">    <span class="attribute">left</span>: <span class="number">0px</span>;</div><div class="line">    <span class="attribute">right</span>: <span class="number">0px</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
 
-.two {
-    width: 200px;
-    height: 200px;
-    margin: auto;
-    background-color: white;
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    }
-</code></pre>
       
 
       
@@ -467,15 +406,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
             
             <div class="clearfix"></div>

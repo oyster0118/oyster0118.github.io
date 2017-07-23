@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2015/07/14/关于for循环机制的想法/index.html">
 <meta property="og:site_name" content="Oyster&#39;s shell">
 <meta property="og:description" content="前言众所周知，在《权威指南》和《JavaScript高级程序设计 第三版》都明确写了在JS中的{}只是单纯的代码块，而不存在块级作用域。但是ES6出现之后，我对for循环的底层细节有一些小小的困惑。今天就来简单说一说哈~">
-<meta property="og:updated_time" content="2017-07-14T14:27:46.308Z">
+<meta property="og:updated_time" content="2017-07-23T02:44:44.658Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于for循环机制的想法">
 <meta name="twitter:description" content="前言众所周知，在《权威指南》和《JavaScript高级程序设计 第三版》都明确写了在JS中的{}只是单纯的代码块，而不存在块级作用域。但是ES6出现之后，我对for循环的底层细节有一些小小的困惑。今天就来简单说一说哈~">
@@ -178,26 +178,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>众所周知，在《权威指南》和《JavaScript高级程序设计 第三版》都明确写了在JS中的{}只是单纯的代码块，而不存在块级作用域。但是ES6出现之后，我对for循环的底层细节有一些小小的困惑。今天就来简单说一说哈~<br><a id="more"></a><br>由于ES6有了<code>let</code>这样的关键字，我对JS底层的实现（比如编译什么的）感觉有些细思极恐。所以大胆猜测一下：    </p>
-<pre>
-for(var i=0; i<3; i++){="" do="" something="" }="" {="" 相当于是每次循环创建了一个块级作用域？="" i="0;" <="" pre="">
-
-<p>看到这肯定有人骂我智障了，但是大神先别急，来看下面这几段代码：</p>
-<pre>
-for(var i=1; i<=5; i++){="" settimeout(="" function="" timer(){="" console.log(="" i="" );="" },i*1000)="" }="" 每隔1秒打印一个6="" <="" pre="">
-
-<pre>
-for(var i=1; i<=5; i++){="" (function(){="" settimeout(="" function="" timer(){="" console.log(="" i="" );="" },i*1000)="" })();="" }="" 每隔1秒打印一个6="" <="" pre="">
-
-<pre>
-for(var i=1; i<=5; i++){="" (function(){="" var="" j="i;" settimeout(="" function="" timer(){="" console.log(="" );="" },j*1000)="" })();="" }="" 正常工作，时间间隔为1秒，打印1，2，3，4，5，6="" <="" pre="">
-
-<pre>
-for(var i=1; i<=5; i++){="" let="" j="i;" settimeout(="" function="" timer(){="" console.log(="" );="" },j*1000)="" }="" 正常工作，时间间隔为1秒，打印1，2，3，4，5，6="" <="" pre="">
-
-<pre>
-for(let i=1; i<=5; i++){="" settimeout(="" function="" timer(){="" console.log(="" i="" );="" },i*1000)="" }="" 正常工作，时间间隔为1秒，打印1，2，3，4，5，6="" <="" pre="">
-
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>众所周知，在《权威指南》和《JavaScript高级程序设计 第三版》都明确写了在JS中的{}只是单纯的代码块，而不存在块级作用域。但是ES6出现之后，我对for循环的底层细节有一些小小的困惑。今天就来简单说一说哈~<br><a id="more"></a><br>由于ES6有了<code>let</code>这样的关键字，我对JS底层的实现（比如编译什么的）感觉有些细思极恐。所以大胆猜测一下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="number">3</span>; i++)&#123;</div><div class="line">    <span class="comment">//do something</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">&#123;   <span class="comment">//相当于是每次循环创建了一个块级作用域？</span></div><div class="line">    i=<span class="number">0</span>;</div><div class="line">    <span class="comment">//do something</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">&#123;</div><div class="line">  i=<span class="number">1</span>;</div><div class="line">  <span class="comment">//do something</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">&#123;</div><div class="line">  i=<span class="number">2</span>;</div><div class="line">  <span class="comment">//do something</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>看到这肯定有人骂我智障了，但是大神先别急，来看下面这几段代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>; i&lt;=<span class="number">5</span>; i++)&#123;</div><div class="line">  setTimeout( <span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log( i );</div><div class="line">  &#125;,i*<span class="number">1000</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">//每隔1秒打印一个6</span></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>; i&lt;=<span class="number">5</span>; i++)&#123;</div><div class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    setTimeout( <span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>)</span>&#123;</div><div class="line">      <span class="built_in">console</span>.log( i );</div><div class="line">    &#125;,i*<span class="number">1000</span>)</div><div class="line">  &#125;)();</div><div class="line">&#125;</div><div class="line"><span class="comment">//每隔1秒打印一个6</span></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>; i&lt;=<span class="number">5</span>; i++)&#123;</div><div class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> j = i;</div><div class="line">    setTimeout( <span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>)</span>&#123;</div><div class="line">      <span class="built_in">console</span>.log( j );</div><div class="line">    &#125;,j*<span class="number">1000</span>)</div><div class="line">  &#125;)();</div><div class="line">&#125;</div><div class="line"><span class="comment">//正常工作，时间间隔为1秒，打印1，2，3，4，5，6</span></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>; i&lt;=<span class="number">5</span>; i++)&#123;</div><div class="line">  <span class="keyword">let</span> j = i;</div><div class="line">  setTimeout( <span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log( j );</div><div class="line">  &#125;,j*<span class="number">1000</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">//正常工作，时间间隔为1秒，打印1，2，3，4，5，6</span></div><div class="line"></div><div class="line"></div><div class="line">&lt;pre&gt;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">1</span>; i&lt;=<span class="number">5</span>; i++)&#123;</div><div class="line">  setTimeout( <span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log( i );</div><div class="line">  &#125;,i*<span class="number">1000</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">//正常工作，时间间隔为1秒，打印1，2，3，4，5，6</span></div></pre></td></tr></table></figure></p>
 <p>通过这几个例子很容易发现：let将花括号转化为作用域，就可以得到想要的结果</p>
 <blockquote>
 <p>第二个例子中的立即执行函数虽然形成了自己的作用域，但是并没有什么卵用，因为它自己里面没有 i，所以还是要使用外面的 i，而外面的 i都是一样的，也就是6；</p>
@@ -206,7 +188,7 @@ for(let i=1; i<=5; i++){="" settimeout(="" function="" timer(){="" console.log(=
 <p>第五个例子直接在for循环中庸let定义循环变量，也形成了自己的独立作用域。</p>
 </blockquote>
 <p>反正我是说服了自己，不过话说回来这些本来也不重要吧，毕竟该怎么写还是怎么写。今天废话就说到这了~</p>
-</=5;></pre></=5;></pre></=5;></pre></=5;></pre></=5;></pre></3;></pre>
+
       
 
       
@@ -420,15 +402,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
             
             <div class="clearfix"></div>

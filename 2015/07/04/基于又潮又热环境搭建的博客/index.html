@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2015/07/04/基于又潮又热环境搭建的博客/index.html">
 <meta property="og:site_name" content="Oyster&#39;s shell">
 <meta property="og:description" content="顺便记录一下过程  安装hexo  安装用到了node和git提前安装好了，依次输入命令12345678910cd d:/hexo //切到想要安装的目录npm install hexo-cli -ghexo init blogcd blog这里直接hexo init也行默认安装到当前目录npm installhexo g 或者hexo generatehexo s 或者hexo server，可">
-<meta property="og:updated_time" content="2017-07-19T11:05:29.063Z">
+<meta property="og:updated_time" content="2017-07-23T02:41:28.430Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="博客开张了！">
 <meta name="twitter:description" content="顺便记录一下过程  安装hexo  安装用到了node和git提前安装好了，依次输入命令12345678910cd d:/hexo //切到想要安装的目录npm install hexo-cli -ghexo init blogcd blog这里直接hexo init也行默认安装到当前目录npm installhexo g 或者hexo generatehexo s 或者hexo server，可">
@@ -182,29 +182,36 @@
 <ul>
 <li>安装hexo</li>
 </ul>
-<p>安装用到了node和git提前安装好了，依次输入命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">cd d:/hexo //切到想要安装的目录</div><div class="line">npm install hexo-cli -g</div><div class="line">hexo init blog</div><div class="line">cd blog</div><div class="line">这里直接hexo init也行默认安装到当前目录</div><div class="line">npm install</div><div class="line"></div><div class="line">hexo g 或者hexo generate</div><div class="line"></div><div class="line">hexo s 或者hexo server，可以在http://localhost:4000/ 查看</div></pre></td></tr></table></figure></p>
+<p>安装用到了node和git提前安装好了，依次输入命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> d:/hexo //切到想要安装的目录</div><div class="line">npm install hexo-cli -g</div><div class="line">hexo init blog</div><div class="line"><span class="built_in">cd</span> blog</div><div class="line">这里直接hexo init也行默认安装到当前目录</div><div class="line">npm install</div><div class="line"></div><div class="line">hexo g 或者hexo generate</div><div class="line"></div><div class="line">hexo s 或者hexo server，可以在http://localhost:4000/ 查看</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
 <ul>
 <li>github配置</li>
 </ul>
 <p>先建仓库</p>
-<pre><code>yourID.github.io
-</code></pre><p>然后修改hexo根目录下的_config.yml</p>
-<pre><code>deploy:
-type: git
-repository: https://github.com/yourid/yourid.github.io.git
-branch: master
-
-小心config里面每个&apos;：&apos;后面要有一个空格！！！
-</code></pre><p>安装hexo-deployer-git自动部署发布工具</p>
-<pre><code>npm install hexo-deployer-git  --save
-</code></pre><p>在本地查看你可能需要</p>
+<p><code>yourID.github.io</code></p>
+<p>然后修改hexo根目录下的_config.yml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">type: git</div><div class="line">repository: https://github.com/yourid/yourid.github.io.git</div><div class="line">branch: master</div></pre></td></tr></table></figure></p>
+<p><b>小心config里面每个’：’后面要有一个空格！！！</b></p>
+<ul>
+<li><p>安装hexo-deployer-git自动部署发布工具</p>
+<p>  <code>npm install hexo-deployer-git  --save</code></p>
+</li>
+</ul>
+<p>在本地查看你可能需要</p>
 <pre><code>npm install hexo-server --save //先安装
 hexo s //在打开浏览器输入localhost：4000（默认端口）
 </code></pre><p>其他各种插件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-generator-index --save</div><div class="line">$ npm install hexo-generator-archive --save</div><div class="line">$ npm install hexo-generator-category --save</div><div class="line">$ npm install hexo-generator-tag --save</div><div class="line">$ npm install hexo-server --save</div><div class="line">$ npm install hexo-deployer-git --save</div><div class="line">$ npm install hexo-deployer-heroku --save</div><div class="line">$ npm install hexo-deployer-rsync --save</div><div class="line">$ npm install hexo-deployer-openshift --save</div><div class="line">$ npm install hexo-renderer-marked --save</div><div class="line">$ npm install hexo-renderer-stylus --save</div><div class="line">$ npm install hexo-generator-feed --save</div><div class="line">$ npm install hexo-generator-sitemap --save</div><div class="line">```    </div><div class="line"></div><div class="line">* 发布到Github</div></pre></td></tr></table></figure>
-<p>hexo clean<br>hexo g  //每次跟新修改之后要重新生成页面时使用<br>hexo d<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">* 更新相关</div></pre></td></tr></table></figure></p>
-<p>更新hexo：<br>npm update -g hexo<br>更新主题：<br>cd themes/你的主题<br>git pull<br>更新插件：<br>npm update<br>```</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">npm install hexo-generator-index --save</div><div class="line">npm install hexo-generator-archive --save</div><div class="line">npm install hexo-generator-category --save</div><div class="line">npm install hexo-generator-tag --save</div><div class="line">npm install hexo-server --save</div><div class="line">npm install hexo-deployer-git --save</div><div class="line">npm install hexo-deployer-heroku --save</div><div class="line">npm install hexo-deployer-rsync --save</div><div class="line">npm install hexo-deployer-openshift --save</div><div class="line">npm install hexo-renderer-marked --save</div><div class="line">npm install hexo-renderer-stylus --save</div><div class="line">npm install hexo-generator-feed --save</div><div class="line">npm install hexo-generator-sitemap --save</div><div class="line">```    </div><div class="line"></div><div class="line">* 发布到Github</div></pre></td></tr></table></figure>
+<p>hexo clean<br>hexo g  //每次跟新修改之后要重新生成页面时使用<br>hexo d<br>```</p>
+<ul>
+<li>更新相关</li>
+</ul>
+<p>更新hexo：</p>
+<p><code>npm update -g hexo</code></p>
+<p>更新主题：</p>
+<p><code>cd themes/你的主题</code></p>
+<p><code>git pull</code></p>
+<p>更新插件：</p>
+<p><code>npm update</code></p>
 
       
 
@@ -423,15 +430,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
             
             <div class="clearfix"></div>
